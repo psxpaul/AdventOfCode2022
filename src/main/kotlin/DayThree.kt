@@ -1,4 +1,4 @@
-class DayThree: AdventDay(3){
+class DayThree: AdventDay() {
     override fun partOne(data: List<String>) {
         var prioritySum = 0
         data.forEach {

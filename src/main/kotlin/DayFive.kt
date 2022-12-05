@@ -1,6 +1,6 @@
 import java.lang.RuntimeException
 
-class DayFive: AdventDay(5) {
+class DayFive: AdventDay() {
     companion object {
         private val STACK_REGEX = Regex("\\[[A-Z]+\\]")
         private val MOVE_REGEX = Regex("^move (\\d+) from (\\d+) to (\\d+)$")

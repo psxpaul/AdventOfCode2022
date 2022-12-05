@@ -1,4 +1,4 @@
-class DayFour: AdventDay(4) {
+class DayFour: AdventDay() {
     override fun partOne(data: List<String>) {
         val total = data.count {
             val elves = parse(it)

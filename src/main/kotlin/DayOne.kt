@@ -1,4 +1,4 @@
-class DayOne: AdventDay(1) {
+class DayOne: AdventDay() {
     override fun partOne(data: List<String>) {
         println("Richest elf has ${results(data)[0].totalCalories()} calories")
     }

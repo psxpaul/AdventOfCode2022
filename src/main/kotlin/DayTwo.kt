@@ -1,4 +1,4 @@
-class DayTwo: AdventDay(2) {
+class DayTwo: AdventDay() {
     override fun partOne(data: List<String>) {
         var totalScore = 0
         data.forEach {
