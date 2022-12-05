@@ -16,5 +16,5 @@ sealed class AdventDay(private val dayNumber: Int) {
 }
 
 fun main() {
-    DayFour().run(false)
+    DayFive().run(false)
 }
