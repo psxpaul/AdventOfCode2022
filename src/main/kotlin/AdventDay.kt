@@ -6,6 +6,7 @@ sealed class AdventDay {
     abstract fun partTwo(data: List<String>)
 
     fun run(dryRun: Boolean) {
+        println("${javaClass.simpleName}(dryRun=$dryRun)")
         partOne(data(dryRun))
         partTwo(data(dryRun))
     }
@@ -16,5 +17,5 @@ sealed class AdventDay {
 }
 
 fun main() {
-    DaySix().run(false)
+    DaySeven().run(false)
 }
