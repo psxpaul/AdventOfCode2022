@@ -17,5 +17,5 @@ sealed class AdventDay {
 }
 
 fun main() {
-    DayEleven().run(false)
+    DayTwelve().run(false)
 }
