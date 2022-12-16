@@ -41,60 +41,60 @@ class DayTwo: AdventDay() {
 
         println("Part2 totalScore - $totalScore")
     }
-}
 
-enum class Move(val oppStr: String, val myStr: String, val score: Int) {
-    ROCK("A", "X", 1),
-    PAPER("B", "Y", 2),
-    SCISSORS("C", "Z", 3);
+    enum class Move(val oppStr: String, val myStr: String, val score: Int) {
+        ROCK("A", "X", 1),
+        PAPER("B", "Y", 2),
+        SCISSORS("C", "Z", 3);
 
-    companion object {
-        fun fromOpponent(s: String) = values().find { it.oppStr == s }!!
-        fun fromMy(s: String) = values().find { it.myStr == s }!!
+        companion object {
+            fun fromOpponent(s: String) = values().find { it.oppStr == s }!!
+            fun fromMy(s: String) = values().find { it.myStr == s }!!
+        }
+
+        fun isWin(other: Move) = when (this) {
+            ROCK -> when (other) {
+                ROCK -> null
+                PAPER -> false
+                SCISSORS -> true
+            }
+            PAPER -> when (other) {
+                ROCK -> true
+                PAPER -> null
+                SCISSORS -> false
+            }
+            SCISSORS -> when (other) {
+                ROCK -> false
+                PAPER -> true
+                SCISSORS -> null
+            }
+        }
     }
 
-    fun isWin(other: Move) = when (this) {
-        ROCK -> when (other) {
-            ROCK -> null
-            PAPER -> false
-            SCISSORS -> true
-        }
-        PAPER -> when (other) {
-            ROCK -> true
-            PAPER -> null
-            SCISSORS -> false
-        }
-        SCISSORS -> when (other) {
-            ROCK -> false
-            PAPER -> true
-            SCISSORS -> null
-        }
-    }
-}
+    enum class DesiredResult(val s: String) {
+        WIN("Z"),
+        DRAW("Y"),
+        LOSE("X");
 
-enum class DesiredResult(val s: String) {
-    WIN("Z"),
-    DRAW("Y"),
-    LOSE("X");
-
-    companion object {
-        fun from(s: String) = values().find { it.s == s }!!
-    }
-    fun toMove(oppMove: Move) = when (oppMove) {
-        Move.ROCK -> when (this) {
-            WIN -> Move.PAPER
-            LOSE -> Move.SCISSORS
-            DRAW -> Move.ROCK
+        companion object {
+            fun from(s: String) = values().find { it.s == s }!!
         }
-        Move.PAPER -> when (this) {
-            WIN -> Move.SCISSORS
-            LOSE -> Move.ROCK
-            DRAW -> Move.PAPER
-        }
-        Move.SCISSORS -> when (this) {
-            WIN -> Move.ROCK
-            LOSE -> Move.PAPER
-            DRAW -> Move.SCISSORS
+        fun toMove(oppMove: Move) = when (oppMove) {
+            Move.ROCK -> when (this) {
+                WIN -> Move.PAPER
+                LOSE -> Move.SCISSORS
+                DRAW -> Move.ROCK
+            }
+            Move.PAPER -> when (this) {
+                WIN -> Move.SCISSORS
+                LOSE -> Move.ROCK
+                DRAW -> Move.PAPER
+            }
+            Move.SCISSORS -> when (this) {
+                WIN -> Move.ROCK
+                LOSE -> Move.PAPER
+                DRAW -> Move.SCISSORS
+            }
         }
     }
 }
