@@ -31,20 +31,25 @@ class DayEighteeen: AdventDay() {
             sides
         }
 
-        // TODO - this gives the correct answer for the test data, but incorrect for the real data (2041)
         println("Part 2 - ${result.sum()}")
     }
 
     private fun fill(grid: MutableMap<Point, Int>) {
         val queue = mutableListOf(Point(0, 0, 0))
+        val minX = grid.keys.minOfOrNull { it.x }!! - 1
         val maxX = grid.keys.maxOfOrNull { it.x }!! + 1
+        val minY = grid.keys.minOfOrNull { it.y }!! - 1
         val maxY = grid.keys.maxOfOrNull { it.y }!! + 1
+        val minZ = grid.keys.minOfOrNull { it.z }!! - 1
         val maxZ = grid.keys.maxOfOrNull { it.z }!! + 1
 
         while (queue.isNotEmpty()) {
             val p = queue.removeFirst()
 
-            if (grid.contains(p) || p.x < 0 || p.x > maxX || p.y < 0 || p.y > maxY || p.z < 0 || p.z > maxZ) continue
+            if (grid.contains(p) ||
+                p.x < minX || p.x > maxX ||
+                p.y < minY || p.y > maxY ||
+                p.z < minZ || p.z > maxZ) continue
 
             grid[p] = 0
             queue.add(Point(p.x + 1, p.y, p.z))
